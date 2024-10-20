@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+    <link rel="stylesheet" href="stylerps.css">
+</head>
+<body>
+    <h1 id = "head">Welcome to rock paper scissors!</h1>
+    <p>Select your shi:<p>
+    <div class = "selections"> <!--buttons-->
+        <button id = "rk" name = "select" value = "Rock">Rock</button>
+        <button id = "pr" name = "select" value = "Paper">Paper</button>
+        <button id = "ss" name = "select" value = "Scissors">Scissors</button>
+    </div>
+    <br>
+    <div id = "res"></div> <!---->
+    <div class = final>
+        <p></p>
+        <h1 id = "result"></h1>
+    </div>
+    <script>
+        var CompSel = function()
+        {
+            var arr = ["Rock","Paper","Scissors"];
+            cgen = Math.floor(Math.random()*3);
+            return arr.at(cgen);
+        }
+
+        buttons = document.getElementsByName("select");
+        buttons.forEach((button) => {
+            button.addEventListener('click',() => {
+                var sel = button.value;
+                var comp = CompSel();
+                document.getElementById("res").innerHTML = ("Comp picks: "+comp);
+                
+                if (comp == sel)
+                {
+                    document.getElementById("result").innerHTML = "This is a draw";
+                }
+                else if ((sel == "Rock" && comp == "Scissors")||(sel == "Paper" && comp == "Rock")||(sel == "Scissors" && comp == "Paper"))
+                {
+                    document.getElementById("result").innerHTML = "You Win!!";
+                }
+                else
+                {
+                    document.getElementById("result").innerHTML = "You lose:(";
+                }
+                });
+            });
+    </script>
+</body>
+</html>
